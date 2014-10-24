@@ -2,10 +2,10 @@ package com.tufsd.drugwars;
 
 
 /**
- * Write a description of class Player here.
+ * A class containing information on players.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SHCC Game Logic Team
+ * @version 20141024
  */
 public class Player
 {
@@ -17,9 +17,6 @@ public class Player
      */
     public Player()
     {
-        // initialise instance variables
-        y = 0;
-        
         //Inv:
         
         int money = 250;
@@ -43,17 +40,5 @@ public class Player
 
         int days = 31; //days until the loan shark comes
         int bounty = 0; //illigal things = bigger bounty
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return y + y;
     }
 }

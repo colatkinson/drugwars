@@ -4,8 +4,8 @@ package com.tufsd.drugwars;
 /**
  * Class to provide a template for the various drugs
  * 
- * @author Luke & Caleb 
- * @version 10/22/14
+ * @author SHCC Game Logic Team
+ * @version 20141022
  */
 public class Drug
 {
