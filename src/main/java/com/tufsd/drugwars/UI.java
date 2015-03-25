@@ -60,14 +60,6 @@ public class UI
         String[] opts = {"New Game", "Quit"};
         String select = menuGen(opts);
 
-        /*System.out.println ("Press 1 to begin new game");
-
-        System.out.println ("Press 2 to quit");
-
-        Scanner menuScanner = new Scanner (System.in);
-        int menuChoice;
-        menuChoice = menuScanner.nextInt();*/
-
         System.out.println (select);
         if (select.equals("New Game"))
         {
@@ -107,13 +99,15 @@ public class UI
 
     public static void playerInfo(Player player)
     {
-        System.out.println("Name: " + player.name);
-        System.out.println("Health: " + player.health);
-        System.out.println("Inventory: " + player.inv);
+        System.out.println();
+        System.out.println("Player Summary");
+        System.out.println("\tName: " + player.name);
+        System.out.println("\tHealth: " + player.health);
+        System.out.println("\tInventory: " + player.inv);
         NumberFormat money = NumberFormat.getCurrencyInstance();
 
-        System.out.println("Debt: " + money.format(player.debt));
-
+        System.out.println("\tDebt: " + money.format(player.debt));
+        System.out.println();
     }
     
     public static void outputInventory (Player player)
@@ -122,16 +116,14 @@ public class UI
         for (Drug whatever: player.inv.keySet())
         {
             System.out.print( " " + whatever + " " + player.inv.get(whatever));
-            
-            
-
         }
     }
     
     public static Location locationMenu()
     {
        String[] new1 = Location.names();
-        //String result = Location.valueOf(new1);
+       System.out.println();
+       System.out.println("Where to?");
        String val = menuGen(new1);
        return Location.valueOf(val);
     }
@@ -139,17 +131,31 @@ public class UI
     public static Drug drugMenu(Player player)
     {
         Set<Drug> myset = player.inv.keySet();
-        String[] new1 = new String[myset.size()];
+        String[] new1 = new String[myset.size() + 1];
         int i = 0;
         for(Drug drug : myset)
         {
-            System.out.println(drug);
             new1[i] = drug.toString();
             i++;
         }
-        //String[] new1 = myset.toArray(new String[myset.size()]);
+        new1[myset.size()] = "Cancel";
+        System.out.println();
+        System.out.println("Which drug would you like to sell?");
         String val = menuGen(new1);
-        return Drug.valueOf(val);
+        
+        if(!val.equals("Cancel"))
+            return Drug.valueOf(val);
+        else
+            return null;
+    }
+    
+    public static void drugSell(Drug d, Player player)
+    {
+        if(d != null)
+        {
+            System.out.print("How many? ");
+            System.out.println("(0-" + player.inv.get(d) + ")");
+        }
     }
     
     public static void gameMenu(Player player)
